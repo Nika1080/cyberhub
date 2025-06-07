@@ -1,0 +1,36 @@
+<header>
+    <div class="header-block1">
+        <a routerLink="/home" class="cyberhub-anchor">
+            <span class="letter-c">C</span>yber<span class="hub">Hub</span>    
+        </a>
+
+        <div class="header-wrapper">
+            <app-badge-component></app-badge-component>
+
+            <div class="column-divider"></div>
+
+            <div class="login-wrapper" *ngIf="!user_token">
+                <button mat-button (click)="openUserLoginComponent()">Sign In</button>
+                <div class="column-divider"></div>
+                <button mat-button (click)="openUserRegisterComponent()">Register</button>
+            </div>
+
+            <div class="userbox" *ngIf="user_token">
+                <img src="assets/Icons/user.png" alt="User">
+                <button mat-button [matMenuTriggerFor]="usermenu">{{username}}</button>
+            </div>
+
+            <mat-menu #usermenu>
+                <button mat-button (click)="logOutUser()">Sign Out</button>
+            </mat-menu>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+
+    <app-header-menu></app-header-menu>
+</header>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>

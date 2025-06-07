@@ -1,0 +1,76 @@
+<section>
+  <div class="bigbox">
+
+    <!-- Empty Cart -->
+    <h2 class="cart-h2">Cart <span class="empty-span" *ngIf="cartItems.length == 0">is empty</span></h2>
+
+    <div class="emptybox" *ngIf="cartItems.length == 0">
+      <fa-icon [icon]="fontawesome.cart"></fa-icon>
+      <h4 class="fill-h4">You Can Fill Your Cart By Navigating To Shopping Section</h4>
+      <button mat-flat-button class="goshopping" color="primary" routerLink="../assembly">Go Shopping</button>
+    </div>
+
+
+    <!-- Filled Cart -->
+    <div class="smallbox" *ngIf="cartItems.length !== 0">
+      <div class="cartbox">
+        <div class="titlebox">
+          <br />
+          <h4 class="name">Name</h4>
+          <h4 class="price">Price</h4>
+          <h4 class="quantity">Quantity</h4>
+          <h4 class="total">Total Cost</h4>
+        </div>
+
+        <div class="itembox">
+          <div class="item" *ngFor="let item of cartItems">
+            <img class="item-img" [src]="item.imageUrl" />
+            <span class="item-span">{{ item.name }}</span>
+            <span class="item-price">{{ item.price }}$</span>
+
+            <div class="item-quantity-box">
+              <button mat-icon-button class="icon-button" (click)="changeQuantity(item, 1)">-</button>
+              <span class="item-quantity">{{ item.quantity }}</span>
+              <button mat-icon-button class="icon-button" (click)="changeQuantity(item, 2)">+</button>
+            </div>
+
+            <span class="item-overall">{{ item.quantity * item.price }}$</span>
+            <div class="removebox">
+              <button mat-mini-fab color="warn" class="mat-fab" (click)="deleteItemFromCart(item)">
+                <fa-icon [icon]="fontawesome.xmark"></fa-icon>
+              </button>
+            </div>
+          </div>
+
+          <h5 class="quantity-h5">Items Quantity: {{ calculatetotalItemsQuantity() }}</h5>
+
+          <div class="buttonbox">
+            <br />
+            <button mat-flat-button color="warn" class="clearbutton" (click)="clearCart()">Clear Cart</button>
+            <button mat-flat-button color="primary" class="gobutton" routerLink="../assembly">Continue Shopping</button>
+            <br />
+          </div>
+        </div>
+      </div>
+
+      <div class="summarybox">
+        <h3 class="summary-h3">Summary</h3>
+        <h5 class="selected-h5">Selected Items:</h5>
+        <div class="item-namebox" *ngFor="let names of cartItems">
+          <span class="item-names" *ngIf="names.quantity !== 0">{{names.name}}
+            <span *ngIf="cartItems.indexOf(names) !== cartItems.length - 1">,</span>
+          </span>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <h4 class="total-h4">Total: <span class="dollar">{{ calculateItemsTotalCost() }}$</span></h4>
+        <div class="checkoutbuttonbox">
+          <button mat-button color="primary" class="checkoutbutton" routerLink="/checkout" (click)="sendItemsToCheckout()">To Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-loading *ngIf="isLoading"></app-loading>

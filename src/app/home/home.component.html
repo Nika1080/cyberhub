@@ -1,0 +1,78 @@
+<div class="bodybox" [ngStyle]="{'background-image': 'url(assets/Backgrounds/background-gaming.jpg)'}">
+  
+  <section class="header-section">
+    <h1>Premium PC Shop For Ultimate <span style="color: blue">Gaming</span></h1>
+  
+    <div class="shopbutton-box">
+      <button class="shop-button" routerLink="/assembly">Shop Now</button>
+    </div>
+  </section>
+
+  <section class="gpu-headset-section">
+
+    <div class="gpubox-headsetbox-wrapper">
+      <h2>Now In Stock</h2>
+
+      <div class="gpu-headset-flexbox">
+
+        <div class="gpu-headset-column-wrapper">     
+          <div class="gpu-headset-headerbox">
+            <span>GTX 1060</span>
+          </div>
+
+          <img src="assets/gtx1060.jpg">
+          <button mat-button class="gpu-button">Buy Now</button>
+        </div>
+
+        <div class="gpu-headset-column-wrapper">
+          <div class="gpu-headset-headerbox">
+            <span class="headset-span">Steelseries Arctis Pro</span>
+          </div>
+
+          <img src="assets/arctis.jpg">
+          <button mat-button class="headset-button">Buy Now</button>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section class="manufacturers-section">
+    <app-new-manufacturers-section></app-new-manufacturers-section>
+  </section>
+
+  <section class="news-section">
+    <div class="newsbox">
+      <h2 class="news-h2" id="News">News</h2>
+
+      <div class="ngfor-news" *ngFor="let item of news">
+
+        <img [src]="item.photoUrl" alt="image">
+        <div class="news-text-box">
+          <h6>{{ item.title }}</h6>
+          <p>{{ item.body }}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="game-ready-pc-section">
+    <app-game-ready-pcs-section></app-game-ready-pcs-section>
+  </section>
+
+  <section>
+    <div class="buildbox">
+      <h2>Build Your Own</h2>
+      <div class="bigboxgrid">
+        <button mat-button *ngFor="let item of parts" [routerLink]="[item.routerLink, item.id]">
+          <div class="partbox">
+            <img [src]="item.imageUrl" /> 
+            {{ item.name }}</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+</div>

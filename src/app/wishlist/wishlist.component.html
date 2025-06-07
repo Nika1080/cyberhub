@@ -1,0 +1,51 @@
+<section>
+  <div class="bigbox">
+    <h2 class="cart-h2">Wishlist <span class="empty-span" *ngIf="wishListItems.length === 0">is empty</span></h2>
+
+    <!-- Empty -->
+    <div class="emptybox" *ngIf="wishListItems.length == 0">
+      <fa-icon [icon]="fontawesome.heart"></fa-icon>
+      <h4 class="fill-h4">Fill Wishlist From Shopping Section</h4>
+      <button mat-flat-button class="goshopping" color="accent" routerLink="../assembly">Go Shopping</button>
+    </div>
+
+    <div class="smallbox" *ngIf="wishListItems.length !== 0">
+      <div class="wishlistbox">
+        <div class="titlebox">
+          <br />
+          <h4 class="id margin">ID</h4>
+          <h4 class="manufacturer margin">Manufacturer</h4>
+          <h4 class="name margin">Name</h4>
+          <h4 class="price margin">Price</h4>
+        </div>
+
+        <div class="itembox">
+          <div class="item" *ngFor="let item of wishListItems">
+            <img class="item-img" [src]="item.imageUrl" />
+            <span class="item-text">{{ item.id }}</span>
+            <span class="item-text">{{ item.manufacturer }}</span>
+            <span class="item-text">{{ item.name }}</span>
+            <span class="item-text">{{ item.price }}$</span>
+
+            <div class="removebox">
+              <button mat-mini-fab color="primary" class="cartbutton" (click)="sendWishListItemsToCart(item)">
+                <fa-icon class="cart" [icon]="fontawesome.cart"></fa-icon>
+              </button>
+              <button mat-mini-fab color="warn" class="mat-fab" (click)="removeItemFromWishlist(item)">
+                <fa-icon [icon]="fontawesome.xmark"></fa-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="buttonbox">
+            <br />
+            <button mat-flat-button color="warn" class="clearbutton" (click)="removeItemFromWishlist('deleteAll')">Clear Wishlist</button>
+            <button mat-flat-button color="accent" class="gobutton" routerLink="../assembly">Continue Shopping</button>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-loading *ngIf="isLoading"></app-loading>

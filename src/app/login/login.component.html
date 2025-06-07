@@ -1,0 +1,25 @@
+<div class="bigbox">
+  <div class="iconbox">
+    <br />
+    <h3 class="login">Log in</h3>
+    <fa-icon [icon]="fontawesome.xmark" class="xmark" (click)="closeDialog()"></fa-icon>
+  </div>
+
+  <form class="form" [formGroup]="userForm" (submit)="checkForUserCredentials()">
+    <mat-form-field appearance="outline" class="input">
+      <mat-label>Username or Email</mat-label>
+      <input matInput type="text" formControlName="username" class="matinput" />
+    </mat-form-field>
+
+      <mat-form-field appearance="outline" class="input">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" class="matinput"/>
+      </mat-form-field>
+        
+      
+      <button mat-flat-button type="submit" color="primary" class="button" [disabled]="userForm.status === 'INVALID'">Login</button>
+      
+      <button mat-flat-button class="create" (click)="openDialog()">Create New</button>
+      <app-loading [spinnerDiameter]="30" *ngIf="isLoading"></app-loading>
+  </form>
+</div>

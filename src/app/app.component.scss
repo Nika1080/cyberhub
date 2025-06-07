@@ -1,0 +1,206 @@
+$white: #ffffff;
+$primary-color: rgb(0, 0, 255);
+$secondary-color: #ffffff;
+$font-play: "Play", sans-serif;
+$letter-spacing: 2px;
+
+$spacing: 1rem;
+
+header {
+  background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(6, 6, 80, 1) 50%, rgba(0, 20, 83, 1) 100%);
+  font-family: $font-play;
+
+  .header-block1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing $spacing * 6;
+
+    .cyberhub-anchor {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 14px;
+      color: $white;
+      transition: all 0.23s ease;
+
+      .letter-c {
+        color: $primary-color;
+      }
+
+      .hub {
+        border-radius: 3px;
+        background-color: $white;
+        color: $primary-color;
+        padding: 0px 0px 1px 13px;
+        transition: all 0.23s ease;
+      }
+    }
+
+    .cyberhub-anchor:hover {
+      color: rgb(0, 0, 0);
+
+      .hub {
+        background-color: black;
+      }
+    }
+
+    .header-wrapper {
+      display: flex;
+      align-items: center;
+
+      .column-divider {
+        width: 1px;
+        height: 20px;
+        margin: 0 2rem;
+        background-color: $white;
+      }
+
+      .login-wrapper {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        button {
+          font-weight: 400;
+          border-radius: 0px;
+          color: rgb(255, 0, 0);
+          letter-spacing: $letter-spacing - 1px;
+          transition: all 0.3s ease;
+        }
+
+        button:nth-child(3) {
+          color: rgb(0, 255, 0);
+        }
+
+        button:nth-child(1):hover {
+          color: $white;
+          box-shadow: inset 0px -37px 0px rgb(255, 0, 0);
+        }
+
+        button:nth-child(3):hover {
+          color: $white;
+          box-shadow: inset 0px -37px 0px rgb(0, 255, 0);
+        }
+      }
+
+      .userbox {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 30px;
+        }
+
+        button {
+          margin-left: $spacing;
+          color: $white;
+          font-family: $font-play;
+          user-select: none;
+        }
+      }
+    }
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: $secondary-color;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  header {
+    .header-block1 {
+      .header-wrapper {
+        app-badge-component {
+          display: none;
+        }
+
+        .column-divider {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    .header-block1 {
+      padding: 1rem 2rem;
+
+      .header-wrapper {
+        .userbox {
+          button {
+            margin-left: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  header {
+    .header-block1 {
+      .cyberhub-anchor {
+        letter-spacing: 8px;
+
+        .hub {
+          padding-left: 8px;
+        }
+      }
+
+      .header-wrapper {
+        .login-wrapper {
+          button {
+            padding: 0 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  header {
+    .header-block1 {
+      padding: 1rem 0.3rem;
+
+      .cyberhub-anchor {
+        font-size: 2.2rem;
+      }
+
+      .header-wrapper {
+        .column-divider {
+          display: none;
+        }
+
+        .userbox {
+          button {
+            min-width: 5rem;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  header {
+    .header-block1 {
+      .header-wrapper {
+        .login-wrapper {
+          button {
+            font-size: 11px;
+            padding: 0 3px;
+            margin: 0 5px;
+            min-width: 0;
+          }
+        }
+      }
+    }
+  }
+}

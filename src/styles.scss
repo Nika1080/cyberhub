@@ -1,0 +1,66 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Play&display=swap"); // 'Play', sans-serif
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap"); // 'Play', sans-serif; ( Bolder )
+@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100&display=swap"); // 'Saira Condensed', sans-serif
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"); // 'Roboto', sans-serif;
+
+// Swiper
+@import "swiper/css";
+@import "swiper/css/effect-fade";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+// Reset
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+li,
+button,
+input,
+textarea:focus {
+    outline: none;
+}
+
+body,
+html {
+    font-size: 10px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    scroll-behavior: smooth;
+}
+app-cart, app-parts, app-wishlist, app-register, form {
+    position: relative;
+
+    app-loading {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffffad;
+    }
+}
+
+// Material
+
+.mat-menu-panel {
+    min-width: 0 !important;
+    min-height: 0 !important;
+}
+
+.mat-menu-content {
+    display: flex;
+    flex-flow: column;
+}
+
+@media only screen and (max-width: 570px) {
+    .mat-stepper-horizontal-line {
+        display: none;
+    }
+}
